@@ -1,0 +1,86 @@
+<configs>
+
+	<!-- Strip vanilla's full-rate seed drops FIRST (before the reduced-chance
+	     ones are appended below): the always-on farmerBonusSeed harvest drop
+	     and the on-destroy seed drop. Order matters ~ 7DTD applies patches top
+	     to bottom, so this must precede the appends or it would also remove the
+	     new drops (they share the farmerBonusSeed tag). -->
+	<remove xpath="/blocks/block[contains(@name, 'HarvestPlayer')]/drop[contains(@event, 'Destroy') or contains(@tag, 'farmerBonusSeed')]" />
+
+	<!-- Each harvested plant reverts to its growing (stage 1) block via
+	     DowngradeBlock (TFP ships this hook commented-out per crop; we enable
+	     it), PLUS a reduced-chance bonus seed on harvest (was 100% with the
+	     Living off the Land perk; now prob 0.25). Bump the prob values to taste. -->
+
+	<append xpath="/blocks/block[@name='plantedMushroom3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedMushroom1"/>
+		<drop event="Harvest" name="plantedMushroom1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedYucca3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedYucca1"/>
+		<drop event="Harvest" name="plantedYucca1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedCotton3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedCotton1"/>
+		<drop event="Harvest" name="plantedCotton1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedCoffee3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedCoffee1"/>
+		<drop event="Harvest" name="plantedCoffee1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedGoldenrod3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedGoldenrod1"/>
+		<drop event="Harvest" name="plantedGoldenrod1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedAloe3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedAloe1"/>
+		<drop event="Harvest" name="plantedAloe1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedBlueberry3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedBlueberry1"/>
+		<drop event="Harvest" name="plantedBlueberry1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedPotato3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedPotato1"/>
+		<drop event="Harvest" name="plantedPotato1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedChrysanthemum3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedChrysanthemum1"/>
+		<drop event="Harvest" name="plantedChrysanthemum1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedCorn3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedCorn1"/>
+		<drop event="Harvest" name="plantedCorn1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedGraceCorn3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedGraceCorn1"/>
+		<drop event="Harvest" name="plantedGraceCorn1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedHop3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedHop1"/>
+		<drop event="Harvest" name="plantedHop1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<append xpath="/blocks/block[@name='plantedPumpkin3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedPumpkin1"/>
+		<drop event="Harvest" name="plantedPumpkin1" count="1" prob="0.25" tag="farmerBonusSeed"/>
+	</append>
+
+	<!-- Snowberry extends treeGrassMaster and has no vanilla bonus-seed drop,
+	     so it only gets the revert (no bonus seed to reduce). -->
+	<append xpath="/blocks/block[@name='plantedSnowberry3HarvestPlayer']">
+		<property name="DowngradeBlock" value="plantedSnowberry1"/>
+	</append>
+
+</configs>
