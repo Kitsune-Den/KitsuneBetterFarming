@@ -4,6 +4,6 @@
 	<DisplayName value="Kitsune Better Farming" />
 	<Description value="Plants revert to their growing stage on harvest instead of being destroyed, plus a reduced-chance bonus seed. Updated for 7DTD V3.0 (Dead Hot Summer): all 14 crops incl. Snowberry. Based on Better Farming by BattleMantis." />
 	<Author value="AdaInTheLab" />
-	<Version value="3.0.0"/>
+	<Version value="3.0.1"/>
 	<Website value="" />
 </xml>
