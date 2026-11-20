@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>KitsuneBetterFarming</AssemblyName>
+    <RootNamespace>KitsuneBetterFarming</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DebugType>none</DebugType>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <!-- Build against the game's own framework + engine DLLs.
+         Override with:  dotnet build -p:GameManaged="D:/path/to/7DaysToDie_Data/Managed" -->
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <NoStdLib>true</NoStdLib>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+    <GameManaged Condition="'$(GameManaged)' == ''">G:/SteamLibrary/steamapps/common/7 Days To Die/7DaysToDie_Data/Managed</GameManaged>
+    <FrameworkPathOverride>$(GameManaged)</FrameworkPathOverride>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src/**/*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib"><HintPath>$(GameManaged)/mscorlib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="System"><HintPath>$(GameManaged)/System.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="System.Core"><HintPath>$(GameManaged)/System.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="netstandard"><HintPath>$(GameManaged)/netstandard.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(GameManaged)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="LogLibrary"><HintPath>$(GameManaged)/LogLibrary.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(GameManaged)/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(GameManaged)/UnityEngine.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+  <!-- This repo's root is the mod folder: put the DLL next to ModInfo.xml. -->
+  <Target Name="CopyToModFolder" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(MSBuildProjectDirectory)" />
+  </Target>
+</Project>

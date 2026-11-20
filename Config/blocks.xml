@@ -6,6 +6,99 @@
 	     to bottom, so this must precede the appends or it would also remove the
 	     new drops (they share the farmerBonusSeed tag). -->
 	<remove xpath="/blocks/block[contains(@name, 'HarvestPlayer')]/drop[contains(@event, 'Destroy') or contains(@tag, 'farmerBonusSeed')]" />
+	<!-- Regrowing seedlings. A vanilla seedling has 1 health, so the swing after
+	     the harvesting one (easy with a fast tool or a held button) destroyed the
+	     plant that had just reverted, handing the seed back and leaving the plot
+	     empty. Harvested plants now revert to these copies of the seedling, which
+	     take a few deliberate hits to remove. They grow on exactly like a planted
+	     seed. Must come before the appends below, which point at them. -->
+	<append xpath="/blocks">
+		<block name="plantedMushroom1Regrow">
+			<property name="Extends" value="plantedMushroom1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedMushroom1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedYucca1Regrow">
+			<property name="Extends" value="plantedYucca1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedYucca1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedCotton1Regrow">
+			<property name="Extends" value="plantedCotton1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedCotton1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedCoffee1Regrow">
+			<property name="Extends" value="plantedCoffee1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedCoffee1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedGoldenrod1Regrow">
+			<property name="Extends" value="plantedGoldenrod1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedGoldenrod1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedAloe1Regrow">
+			<property name="Extends" value="plantedAloe1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedAloe1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedBlueberry1Regrow">
+			<property name="Extends" value="plantedBlueberry1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedBlueberry1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedPotato1Regrow">
+			<property name="Extends" value="plantedPotato1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedPotato1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedChrysanthemum1Regrow">
+			<property name="Extends" value="plantedChrysanthemum1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedChrysanthemum1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedCorn1Regrow">
+			<property name="Extends" value="plantedCorn1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedCorn1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedGraceCorn1Regrow">
+			<property name="Extends" value="plantedGraceCorn1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedGraceCorn1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedHop1Regrow">
+			<property name="Extends" value="plantedHop1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedHop1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedPumpkin1Regrow">
+			<property name="Extends" value="plantedPumpkin1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedPumpkin1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+		<block name="plantedSnowberry1Regrow">
+			<property name="Extends" value="plantedSnowberry1" param1="UnlockedBy"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="plantedSnowberry1"/>
+			<property name="MaxDamage" value="150"/>
+		</block>
+	</append>
+
 
 	<!-- Each harvested plant reverts to its growing (stage 1) block via
 	     DowngradeBlock (TFP ships this hook commented-out per crop; we enable
@@ -13,74 +106,74 @@
 	     Living off the Land perk; now prob 0.25). Bump the prob values to taste. -->
 
 	<append xpath="/blocks/block[@name='plantedMushroom3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedMushroom1"/>
+		<property name="DowngradeBlock" value="plantedMushroom1Regrow"/>
 		<drop event="Harvest" name="plantedMushroom1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedYucca3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedYucca1"/>
+		<property name="DowngradeBlock" value="plantedYucca1Regrow"/>
 		<drop event="Harvest" name="plantedYucca1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedCotton3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedCotton1"/>
+		<property name="DowngradeBlock" value="plantedCotton1Regrow"/>
 		<drop event="Harvest" name="plantedCotton1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedCoffee3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedCoffee1"/>
+		<property name="DowngradeBlock" value="plantedCoffee1Regrow"/>
 		<drop event="Harvest" name="plantedCoffee1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedGoldenrod3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedGoldenrod1"/>
+		<property name="DowngradeBlock" value="plantedGoldenrod1Regrow"/>
 		<drop event="Harvest" name="plantedGoldenrod1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedAloe3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedAloe1"/>
+		<property name="DowngradeBlock" value="plantedAloe1Regrow"/>
 		<drop event="Harvest" name="plantedAloe1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedBlueberry3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedBlueberry1"/>
+		<property name="DowngradeBlock" value="plantedBlueberry1Regrow"/>
 		<drop event="Harvest" name="plantedBlueberry1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedPotato3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedPotato1"/>
+		<property name="DowngradeBlock" value="plantedPotato1Regrow"/>
 		<drop event="Harvest" name="plantedPotato1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedChrysanthemum3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedChrysanthemum1"/>
+		<property name="DowngradeBlock" value="plantedChrysanthemum1Regrow"/>
 		<drop event="Harvest" name="plantedChrysanthemum1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedCorn3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedCorn1"/>
+		<property name="DowngradeBlock" value="plantedCorn1Regrow"/>
 		<drop event="Harvest" name="plantedCorn1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedGraceCorn3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedGraceCorn1"/>
+		<property name="DowngradeBlock" value="plantedGraceCorn1Regrow"/>
 		<drop event="Harvest" name="plantedGraceCorn1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedHop3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedHop1"/>
+		<property name="DowngradeBlock" value="plantedHop1Regrow"/>
 		<drop event="Harvest" name="plantedHop1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<append xpath="/blocks/block[@name='plantedPumpkin3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedPumpkin1"/>
+		<property name="DowngradeBlock" value="plantedPumpkin1Regrow"/>
 		<drop event="Harvest" name="plantedPumpkin1" count="1" prob="0.25" tag="farmerBonusSeed"/>
 	</append>
 
 	<!-- Snowberry extends treeGrassMaster and has no vanilla bonus-seed drop,
 	     so it only gets the revert (no bonus seed to reduce). -->
 	<append xpath="/blocks/block[@name='plantedSnowberry3HarvestPlayer']">
-		<property name="DowngradeBlock" value="plantedSnowberry1"/>
+		<property name="DowngradeBlock" value="plantedSnowberry1Regrow"/>
 	</append>
 
 </configs>
